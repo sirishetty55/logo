@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Div-based Logo — L-corners</title>
+<style>
+  :root{
+    --size: 360px;     /* change this to scale the whole logo */
+    --bg: #c9c9c9;     /* grey background */
+    --fg: #000;        /* black blocks */
+    --thick: 10%;      /* thickness of corner bars (percentage of logo size) */
+    --len: 38%;        /* length of corner bars (percentage of logo size) */
+  }
+
+  /* page */
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#fff;
+  }
+
+  /* logo container */
+  .logo{
+    width:var(--size);
+    height:var(--size);
+    background:var(--bg);
+    position:relative;
+    box-sizing:border-box;
+  }
+
+  /* ---------- top-left L ---------- */
+  .tl .h{
+    position:absolute;
+    top:0;
+    left:0;
+    height:var(--thick);      /* horizontal bar thickness */
+    width:var(--len);        /* horizontal bar length */
+    background:var(--fg);
+  }
+  .tl .v{
+    position:absolute;
+    top:0;
+    left:0;
+    width:var(--thick);      /* vertical bar thickness */
+    height:var(--len);       /* vertical bar length */
+    background:var(--fg);
+  }
+
+  /* ---------- top-right small square ---------- */
+  .tr{
+    position:absolute;
+    top:0;
+    right:0;
+    width:var(--thick);
+    height:var(--thick);
+    background:var(--fg);
+  }
+
+  /* ---------- bottom-left small rectangle (wider) ---------- */
+  .bl{
+    position:absolute;
+    left:0;
+    bottom:0;
+    height:var(--thick);
+    width: calc(0.7 * var(--len)); /* a bit shorter than full corner length */
+    background:var(--fg);
+  }
+
+  /* ---------- bottom-right L (rotated) ---------- */
+  .br .h{
+    position:absolute;
+    right:0;
+    bottom:0;
+    height:var(--thick);
+    width:var(--len);
+    background:var(--fg);
+  }
+  .br .v{
+    position:absolute;
+    right:0;
+    bottom:0;
+    width:var(--thick);
+    height:var(--len);
+    background:var(--fg);
+  }
+
+  /* ---------- center square ---------- */
+  .center{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    width:12%;
+    height:12%;
+    background:var(--fg);
+  }
+
+  /* responsive fallback */
+  @media (max-width:480px){
+    :root{ --size: 240px; }
+  }
+</style>
+</head>
+<body>
+  <div class="logo" role="img" aria-label="Square logo with L-shaped corners">
+    <div class="tl">
+      <div class="h"></div>
+      <div class="v"></div>
+    </div>
+
+    <div class="tr"></div>
+    <div class="bl"></div>
+
+    <div class="br">
+      <div class="h"></div>
+      <div class="v"></div>
+    </div>
+
+    <div class="center"></div>
+  </div>
+</body>
+</html>
